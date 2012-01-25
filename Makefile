@@ -9,7 +9,7 @@
 # Main variables 
 NAME				= anbProtocol
 LIBS				= -lez430
-SRC					= main.c
+SRC					= main.c anbMessages.c
 SRC_DIR			= src
 INC_DIR			= -Iinc
 OUT_DIR			= bin
@@ -45,16 +45,17 @@ ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 		${MAKEDEPEND} $<
 		${CC} ${CFLAGS} -c $< -o $@
 
+# Test devrait disparaitre par la suite
+
 
 -include ${DEPS}
 
-.PHONY: clean
-	clean:
-		@rm -Rf ${OUT_DIR} ${OBJ_DIR} ${DEP_DIR} ${DOC_DIR}
+clean:
+	@rm -Rf ${OUT_DIR} ${OBJ_DIR} ${DEP_DIR} ${DOC_DIR}
 
-.PHONY: rebuild
-	rebuild: clean all
+#rebuild :
+#	rebuild: clean all
 
-.PHONY: doc
-	doc:
-		doxygen
+#.PHONY: doc
+#	doc:
+#		doxygen
